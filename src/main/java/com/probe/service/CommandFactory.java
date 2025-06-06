@@ -3,6 +3,8 @@ package com.probe.service;
 import com.probe.model.Command;
 import com.probe.model.Probe;
 import com.probe.model.commands.MoveCommand;
+import com.probe.model.commands.TurnCommand;
+
 
 public class CommandFactory
 {
