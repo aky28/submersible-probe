@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,13 +34,17 @@ public class ProbeController
 	}
 
 	@PostMapping("/command")
-	public String command(@RequestParam String commands) {
+	public ResponseEntity<String> command(@RequestParam String commands) {
 		if (probe == null) {
-			return "Error: Probe not initialized. Please call /init first.";
+			return ResponseEntity.badRequest().body("Probe is not initialized.");
 		}
 		probe.processCommands(commands);
-		return "Moved to (" + probe.getPosition().x() + "," + probe.getPosition().y() + ") facing " + probe.getDirection();
+		Position pos = probe.getPosition();
+		Direction dir = probe.getDirection();
+		String response = String.format("Moved to (%d,%d) facing %s", pos.x(), pos.y(), dir);
+		return ResponseEntity.ok(response);
 	}
+
 
 	@GetMapping("/visited")
 	public Set<Position> visited() {

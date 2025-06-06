@@ -1,8 +1,9 @@
 package com.probe.model.commands;
 
+import org.springframework.stereotype.Component;
+
 import com.probe.model.Command;
 import com.probe.model.Probe;
-
 
 public class MoveCommand implements Command
 {

@@ -3,10 +3,11 @@ package com.probe.model;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import org.springframework.stereotype.Component;
+
 import com.probe.movement.GridMovementStrategy;
 import com.probe.movement.MovementStrategy;
 import com.probe.service.CommandFactory;
-
 
 public class Probe
 {
